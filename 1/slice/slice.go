@@ -28,8 +28,7 @@ func main() {
 
 	// Update value by index
 	//sl[index] = 10
-	//val := sl[index]
-	//fmt.Printf("Updated value by index [%v]: %v\n", index, val)
+	//fmt.Printf("sl: %v\n", sl)
 	//sl[5] = 10												//  -> panic: index out of range [5] with length 5
 
 	//////////////////////////////
@@ -110,14 +109,14 @@ func main() {
 	//fmt.Printf("Slice after: %v\n", sl)
 }
 
-func update1(arr []int) {
-	fmt.Printf("Slice in function before updating: %v\n", arr)
-	arr[3] = -5
-	fmt.Printf("Slice in function after updating: %v\n", arr)
+func update1(sl []int) {
+	fmt.Printf("Slice in function before updating: %v\n", sl)
+	sl[3] = -5
+	fmt.Printf("Slice in function after updating: %v\n", sl)
 }
 
-func update2(arr []int) {
-	fmt.Printf("Slice in function before updating: %v\n", arr)
-	arr = append(arr, 10)
-	fmt.Printf("Slice in function after updating: %v\n", arr)
+func update2(sl []int) {
+	fmt.Printf("Slice in function before updating: %v\n", sl)
+	sl = append(sl, 10)
+	fmt.Printf("Slice in function after updating: %v\n", sl)
 }

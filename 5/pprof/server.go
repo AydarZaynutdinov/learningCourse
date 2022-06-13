@@ -1,17 +1,16 @@
 package main
 
 // CPU
-// go tool pprof http://localhost:8080/debug/pprof/profile\?seconds\=
+// go tool pprof http://localhost:8080/debug/pprof/profile\?seconds\=10
 // web
 // list prepareInfo
 // weblist prepareInfo
 
-// Allocation
+// Heap
 // go tool pprof http://localhost:8080/debug/pprof/heap
 // web prepareInfo
 
 import (
-	"encoding/json"
 	"github.com/go-chi/chi/v5"
 	"github.com/go-chi/chi/v5/middleware"
 	"log"
@@ -28,7 +27,6 @@ const duration = time.Second * 5
 
 func main() {
 	r := chi.NewRouter()
-	r.Use(middleware.Logger)
 
 	r.Get("/info/", getInfo)
 	r.Mount("/debug/", middleware.Profiler())
@@ -43,17 +41,7 @@ func main() {
 }
 
 func getInfo(writer http.ResponseWriter, _ *http.Request) {
-	payload := preparePayload()
-	_, _ = writer.Write(payload)
-}
-
-func preparePayload() []byte {
-	info := prepareInfo()
-	jsonData, err := json.Marshal(info)
-	if err != nil {
-		log.Printf("Something bad happened: %s\n", err)
-	}
-	return jsonData
+	_, _ = writer.Write([]byte("Hi there!!"))
 }
 
 func prepareInfo() CoolInfo {
@@ -61,7 +49,9 @@ func prepareInfo() CoolInfo {
 	message := "Really cool info!!"
 	for i := 0; i < 10000; i++ {
 		sl = append(sl, i)
-		message += message
+		if i%1000 == 0 {
+			message += message
+		}
 	}
 
 	return CoolInfo{
@@ -84,7 +74,7 @@ func someActivity() {
 }
 
 func action() {
-	for i := 0; i < 10000; i++ {
+	for i := 0; i < 100; i++ {
 		_ = prepareInfo()
 	}
 }

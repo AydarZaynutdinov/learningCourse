@@ -32,11 +32,11 @@ func main() {
 
 	// Check that value exists
 	//fmt.Printf("Map: %v\n", m)
-	//
+
 	//key := "key1"
 	//val, exists := m[key]
 	//fmt.Printf("key: %v -> val: %v. exists: %v\n", key, val, exists)
-	//
+
 	//key = "notExistingKey"
 	//val, exists = m[key]
 	//fmt.Printf("key: %v -> val: %v. exists: %v\n", key, val, exists)

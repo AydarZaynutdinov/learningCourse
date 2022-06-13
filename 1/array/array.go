@@ -25,7 +25,7 @@ func main() {
 	//arr[index] = 10
 	//val := arr[index]
 	//arr[5] = 10												// -> error
-	//fmt.Printf("Updated value by index [%v]: %v\n", index, val)
+	//fmt.Printf("Array: %v\n", arr)
 
 	//////////////////////////////
 	// Go through all elements
